@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<iiv class="row">
+
+<div class="col-md-4 offset-md-4">
+<!-- La targeta card -->
+<div class="card"> <!-- targeta -->
+    <div class="card-body">
+        <form action="/editarClientes/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+            <div class="form-group">
+                <input type="text" id="numidcliente" name="numidcliente" class="form-control"
+                value="{{misClientes.id_cliente}}" placeholder="Id del cliente" minLenght="1" maxLenght="10"  required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtnombre" name="txtnombre" class="form-control" 
+                value="{{misClientes.nombre}}" placeholder="Nombre del cliente" maxLenght="50" required>     
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                value="{{misClientes.direccion}}" placeholder="Direccion del Cliente" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numtelefoto" name="numtelefoto" class="form-control"
+                value="{{misClientes.telefono}}" placeholder="Telefono del cliente" max="20" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                value="{{misClientes.correo}}" placeholder="Correo" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numedad" name="numedad" class="form-control"
+                value="{{misClientes.edad}}" placeholder="Edad" max="50" minLenght="1" maxLenght="10" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtsexo" name="txtsexo" class="form-control"
+                value="{{misClientes.sexo}}" placeholder="Sexo" max="100" required>
+            </div>
+
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form><!--- formulario -->
+    </div>
+</div> <!-- targeta -->
+
+
+<!-- La targeta card -->
+
+</div><!-- columna -->
+
+</div><!-- La fila -->
+
+{% endblock %}

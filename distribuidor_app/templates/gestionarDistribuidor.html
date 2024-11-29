@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+        <h1> Distribuidores </h1>
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/registrarDistribuidor/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+                <div class="form-group">
+                    <input type="number" id="id_distribuidor" name="id_distribuidor" class="form-control"
+                    value="{{misDistribuidores.id_distribuidor}}" placeholder="ID de distribuidor" minLenght="1" maxLenght="10"  required>
+                </div>
+    
+                <div class="form-group">
+                    <input type="text" id="numcosto" name="numcosto" class="form-control"
+                    value="{{misDistribuidores.costo}}" placeholder="Costo Entrega" minLenght="1" maxLenght="10"  required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="number" id="numentregas" name="numentregas" class="form-control"
+                    value="{{misDistribuidores.entregas}}" placeholder="Entregas" max="50" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txttelefono" name="txttelefono" class="form-control"
+                    value="{{misDistribuidores.telefono}}" placeholder="Telefono" max="50" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                    value="{{misDistribuidores.correo}}" placeholder="Correo" max="20" required>
+                </div>
+
+                <div class="form-group py-2">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                    value="{{misDistribuidores.nombre}}" placeholder="Nombre" max="50" minLenght="1" maxLenght="10" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txtciudad" name="txtciudad" class="form-control"
+                    value="{{misDistribuidores.ciudad}}" placeholder="Ciudad" max="100" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+    </div> <!-- targeta -->
+    </div><!-- columna izquierda -->
+    <div class="col-sm-12 col-md-7 col-lg-7 col-xl-7"><!-- columna derecha -->
+    <h1>Listado de Distribuidores</h1>
+    <img class="w-50" src="{%static "img/dist.jpg"%}" alt="noimg" width="400" height="400"/>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_distribuidor</th>
+            <th scope="col">costo</th>
+            <th scope="col">numentregas</th>
+            <th scope="col">telefono</th>
+            <th scope="col">correo</th>
+            <th scope="col">nombre</th>
+            <th scope="col">ciudad</th>
+            <th colspan="2">EDITAR - BORRAR</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in misDistribuidor %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.id_distribuidor}}</td>
+                    <td>{{m.costo}}</td>
+                    <td>{{m.numentregas}}</td>
+                    <td>{{m.telefono}}</td>
+                    <td>{{m.correo}}</td>
+                    <td>{{m.nombre}}</td>
+                    <td>{{m.ciudad}}</td>
+                    <td> <a href="seleccionarDistribuidor/{{m.id_distribuidor}}" class="btn btn-info">Editar</a> </td> <!-- Falta link -->
+                    <td> <a href="borrarDistribuidor/{{m.id_distribuidor}}" class="btn btn-danger">Borrar</a> </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div.table.responsive>
+    </div> <!-- columna derecha -->
+</div><!-- la fila -->
+
+
+
+{% endblock %}

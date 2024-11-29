@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<iiv class="row">
+
+<div class="col-md-4 offset-md-4">
+<!-- La targeta card -->
+<div class="card"> <!-- targeta -->
+    <div class="card-body">
+        <form action="/editarDistribuidor/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+            <div class="form-group">
+                <input type="text" id="id_distribuidor" name="id_distribuidor" class="form-control"
+                value="{{misDistribuidor.id_distribuidor}}" placeholder="ID de distribuidor" minLenght="1" maxLenght="10"  required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="numcosto" name="numcosto" class="form-control"
+                value="{{misDistribuidor.costo}}" placeholder="Costo Entrega" minLenght="1" maxLenght="10"  required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="" id="numentregas" name="numentregas" class="form-control"
+                value="{{misDistribuidor.numentregas}}" placeholder="Entregas" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txttelefono" name="txttelefono" class="form-control"
+                value="{{misDistribuidor.telefono}}" placeholder="Telefono" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                value="{{misDistribuidor.correo}}" placeholder="Correo" max="20" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtnombre" name="txtnombre" class="form-control"
+                value="{{misDistribuidor.nombre}}" placeholder="Nombre" max="50" minLenght="1" maxLenght="10" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtciudad" name="txtciudad" class="form-control"
+                value="{{misDistribuidor.ciudad}}" placeholder="Ciudad" max="100" required>
+            </div>
+
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form><!--- formulario -->
+    </div>
+</div> <!-- targeta -->
+
+
+<!-- La targeta card -->
+
+</div><!-- columna -->
+
+</div><!-- La fila -->
+
+{% endblock %}
