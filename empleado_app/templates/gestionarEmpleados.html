@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+        <h1> Empleados </h1>
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/registrarEmpleados/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+                <div class="form-group">
+                    <input type="text" id="numid_empleado" name="numid_empleado" class="form-control"
+                    value="{{misEmpleados.id_empleado}}" placeholder="ID del empleado" minLenght="1" maxLenght="10"  required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txtnombre" name="txtnombre" class="form-control" 
+                    value="{{misEmpleados.nombre}}" placeholder="Nombre del empleado" maxLenght="50" required>     
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                    value="{{misEmpleados.direccion}}" placeholder="Direccion del empleado" max="50" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="numtelefoto" name="numtelefoto" class="form-control"
+                    value="{{misEmpleados.telefono}}" placeholder="Telefono del empleado" max="20" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="numsalario" name="numsalario" class="form-control"
+                    value="{{misEmpleados.salario}}" placeholder="Salario" max="50" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="numedad" name="numedad" class="form-control"
+                    value="{{misEmpleados.edad}}" placeholder="Edad" max="50" minLenght="1" maxLenght="10" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="txtsexo" name="txtsexo" class="form-control"
+                    value="{{misEmpleados.sexo}}" placeholder="Sexo" max="100" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+    </div> <!-- targeta -->
+    </div><!-- columna izquierda -->
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6"><!-- columna derecha -->
+    <h1>Listado de empleados</h1>
+    <img class="w-50" src="{%static "img/empleado.jpg"%}" alt="noimg" width="400" height="400"/>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_empleado</th>
+            <th scope="col">nombre</th>
+            <th scope="col">direccion</th>
+            <th scope="col">telefono</th>
+            <th scope="col">salario</th>
+            <th scope="col">edad</th>
+            <th scope="col">sexo</th>
+            <th colspan="2">EDITAR - BORRAR</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in misEmpleados %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.id_empleado}}</td>
+                    <td>{{m.nombre}}</td>
+                    <td>{{m.direccion}}</td>
+                    <td>{{m.telefono}}</td>
+                    <td>{{m.salario}}</td>
+                    <td>{{m.edad}}</td>
+                    <td>{{m.sexo}}</td>
+                    <td> <a href="seleccionarEmpleados/{{m.id_empleado}}" class="btn btn-info">Editar</a> </td> <!-- Falta link -->
+                    <td> <a href="borrarEmpleados/{{m.id_empleado}}" class="btn btn-danger">Borrar</a> </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div.table.responsive>
+    </div> <!-- columna derecha -->
+</div><!-- la fila -->
+
+
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<iiv class="row">
+
+<div class="col-md-4 offset-md-4">
+<!-- La targeta card -->
+<div class="card"> <!-- targeta -->
+    <div class="card-body">
+        <form action="/editarEmpleados/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+            <div class="form-group">
+                <input type="text" id="numid_empleado" name="numid_empleado" class="form-control"
+                value="{{misEmpleados.id_empleado}}" placeholder="ID del empleado" minLenght="1" maxLenght="10"  required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtnombre" name="txtnombre" class="form-control" 
+                value="{{misEmpleados.nombre}}" placeholder="Nombre del empleado" maxLenght="50" required>     
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                value="{{misEmpleados.direccion}}" placeholder="Direccion del empleado" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numtelefoto" name="numtelefoto" class="form-control"
+                value="{{misEmpleados.telefono}}" placeholder="Telefono del empleado" max="20" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numsalario" name="numsalario" class="form-control"
+                value="{{misEmpleados.salario}}" placeholder="Salario" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numedad" name="numedad" class="form-control"
+                value="{{misEmpleados.edad}}" placeholder="Edad" max="50" minLenght="1" maxLenght="10" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtsexo" name="txtsexo" class="form-control"
+                value="{{misEmpleados.sexo}}" placeholder="Sexo" max="100" required>
+            </div>
+
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form><!--- formulario -->
+    </div>
+</div> <!-- targeta -->
+
+
+<!-- La targeta card -->
+
+</div><!-- columna -->
+
+</div><!-- La fila -->
+
+{% endblock %}

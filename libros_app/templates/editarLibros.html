@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<iiv class="row">
+
+<div class="col-md-4 offset-md-4">
+<!-- La targeta card -->
+<div class="card"> <!-- targeta -->
+    <div class="card-body">
+        <form action="/editarLibros/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+            <div class="form-group">
+                <input type="text" id="numid_libro" name="numid_libro" class="form-control"
+                value="{{misLibros.id_libro}}" placeholder="ID del libro" minLenght="1" maxLenght="10"  required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txttitulo" name="txttitulo" class="form-control" 
+                value="{{misLibros.titulo}}" placeholder="titulo del libro" maxLenght="50" required>     
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtautor" name="txtautor" class="form-control"
+                value="{{misLibros.autor}}" placeholder="Autor del libro" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtilustrador" name="txtilustrador" class="form-control"
+                value="{{misLibros.ilustrador}}" placeholder="Ilustrador del libro" max="20" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="date" id="dateaño" name="dateaño" class="form-control"
+                value="{{fecha_libro}}" placeholder="Año de salida" max="50" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numprecio" name="numprecio" class="form-control"
+                value="{{misLibros.precio}}" placeholder="Precio del libro" max="50" minLenght="1" maxLenght="10" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numstock" name="numstock" class="form-control"
+                value="{{misLibros.stock}}" placeholder="Stock del libro" max="100" required>
+            </div>
+
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form><!--- formulario -->
+    </div>
+</div> <!-- targeta -->
+
+
+<!-- La targeta card -->
+
+</div><!-- columna -->
+
+</div><!-- La fila -->
+
+{% endblock %}
