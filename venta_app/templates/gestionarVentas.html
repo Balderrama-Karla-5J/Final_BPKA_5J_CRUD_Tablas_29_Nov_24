@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block cuerpo %}
+<div class="row"><!-- la fila -->
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+        <h1> Ventas </h1>
+    <div class="card"> <!-- targeta -->
+        <div class="card-body">
+            <form action="/registrarVentas/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+                <div class="form-group">
+                    <input type="text" id="id_venta" name="id_venta" class="form-control"
+                    value="{{misVentas.id_venta}}" placeholder="ID de venta" minLenght="1" maxLenght="10"  required>
+                </div>
+    
+                <div class="form-group">
+                    <input type="text" id="numid_libro" name="numid_libro" class="form-control"
+                    value="{{misVentas.id_libro}}" placeholder="ID del libro" minLenght="1" maxLenght="10"  required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="date" id="datefecha" name="datefecha" class="form-control"
+                    value="{{misVentas.fecha}}" placeholder="Fecha de venta" max="50" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="number" id="numcantidad" name="numcantidad" class="form-control"
+                    value="{{misVentas.cantidad}}" placeholder="Cantidad" max="50" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="numprecio" name="numprecio" class="form-control"
+                    value="{{misVentas.precio}}" placeholder="Precio" max="20" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="id_cliente" name="id_cliente" class="form-control"
+                    value="{{misVentas.id_cliente}}" placeholder="Id del cliente" max="50" minLenght="1" maxLenght="10" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <input type="text" id="id_empleado" name="id_empleado" class="form-control"
+                    value="{{misVentas.id_empleado}}" placeholder="Id del empleado" max="100" required>
+                </div>
+    
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form><!--- formulario -->
+        </div>
+    </div> <!-- targeta -->
+    </div><!-- columna izquierda -->
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6"><!-- columna derecha -->
+    <h1>Listado de Ventas</h1>
+    <img class="w-50" src="{%static "img/ticket.jpg"%}" alt="noimg" width="400" height="400"/>
+    <div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">id_venta</th>
+            <th scope="col">id_libro</th>
+            <th scope="col">fecha</th>
+            <th scope="col">cantidad</th>
+            <th scope="col">precio</th>
+            <th scope="col">id_cliente</th>
+            <th scope="col">id_empleado</th>
+            <th colspan="2">EDITAR - BORRAR</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for m in misVentas %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{m.id_venta}}</td>
+                    <td>{{m.id_libro}}</td>
+                    <td>{{m.fecha}}</td>
+                    <td>{{m.cantidad}}</td>
+                    <td>{{m.precio}}</td>
+                    <td>{{m.id_cliente}}</td>
+                    <td>{{m.id_empleado}}</td>
+                    <td> <a href="seleccionarVentas/{{m.id_venta}}" class="btn btn-info">Editar</a> </td> <!-- Falta link -->
+                    <td> <a href="borrarVentas/{{m.id_venta}}" class="btn btn-danger">Borrar</a> </td>
+                </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div.table.responsive>
+    </div> <!-- columna derecha -->
+</div><!-- la fila -->
+
+
+
+{% endblock %}
