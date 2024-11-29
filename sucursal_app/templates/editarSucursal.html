@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block cuerpo %}
+<iiv class="row">
+
+<div class="col-md-4 offset-md-4">
+<!-- La targeta card -->
+<div class="card"> <!-- targeta -->
+    <div class="card-body">
+        <form action="/editarSucursal/" method="POST"> {% csrf_token %} <!--- formulario -->
+            
+            <div class="form-group">
+                <input type="text" id="id_sucursal" name="id_sucursal" class="form-control"
+                value="{{misSucursal.id_sucursal}}" placeholder="ID de Sucursal" minLenght="1" maxLenght="100"  required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" id="txtdireccion" name="txtdireccion" class="form-control"
+                value="{{misSucursal.txtdireccion}}" placeholder="Direccion" minLenght="1" maxLenght="100"  required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="numtelefono" name="numtelefono" class="form-control"
+                value="{{misSucursal.numtelefono}}" placeholder="Telefono" max="14" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txtcorreo" name="txtcorreo" class="form-control"
+                value="{{misSucursal.txtcorreo}}" placeholder="Correo" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="number" id="numstock" name="numstock" class="form-control"
+                value="{{misSucursal.numstock}}" placeholder="Stock" max="2000" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="number" id="numempleados" name="numempleados" class="form-control"
+                value="{{misSucursal.numempleados}}" placeholder="Numero de empleados" max="50" minLenght="1" maxLenght="10" required>
+            </div>
+
+            <div class="form-group py-2">
+                <input type="text" id="txthorario" name="txthorario" class="form-control"
+                value="{{misSucursal.txthorario}}" placeholder="Horario" max="100" required>
+            </div>
+
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form><!--- formulario -->
+    </div>
+</div> <!-- targeta -->
+
+
+<!-- La targeta card -->
+
+</div><!-- columna -->
+
+</div><!-- La fila -->
+
+{% endblock %}
